@@ -3,18 +3,19 @@ package me.beomchu.security.config.auth;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.beomchu.security.domain.User;
-import me.beomchu.security.oauth.provider.FacebookUserInfo;
-import me.beomchu.security.oauth.provider.GoogleUserInfo;
-import me.beomchu.security.oauth.provider.Oauth2Info;
+import me.beomchu.security.oauth.provider.*;
 import me.beomchu.security.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.objenesis.ObjenesisHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -42,6 +43,10 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             oauth2Info = new GoogleUserInfo(oAuth2User.getAttributes());
         }else if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")){
             oauth2Info = new FacebookUserInfo(oAuth2User.getAttributes());
+        }else if(userRequest.getClientRegistration().getRegistrationId().equals("naver")){
+            oauth2Info = new NaverUserInfo((Map)oAuth2User.getAttributes().get("response"));
+        }else if(userRequest.getClientRegistration().getRegistrationId().equals("kakao")){
+            oauth2Info = new KakaoUserInfo(oAuth2User.getAttributes());
         }
 
         String provider = oauth2Info.getProvider();
