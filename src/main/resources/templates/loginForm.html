@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1> 로그인 페이지</h1>
+<hr/>
+<form action="/login" method="post">
+    <input type="text" name="username" placeholder="username"> <br/>
+    <input type="password" name="password" placeholder="password"> <br/>
+    <button>로그인</button>
+</form>
+<a href="/oauth2/authorization/google">구글 로그인</a>
+<a href="/oauth2/authorization/facebook">페이스북 로그인</a>
+<a href="Https://kauth.kakao.com/oauth/authorize?client_id=264edb35a42e39dc36007baf5a6c82a7&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code
+">카카오 로그인</a>
+<a href="/signup">회원가입</a>
+
+</body>
+</html>

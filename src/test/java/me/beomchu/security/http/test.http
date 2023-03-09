@@ -1,0 +1,32 @@
+### UserLogin
+
+POST http://localhost:8080/login
+Content-Type: application/x-www-form-urlencoded
+
+{
+  "username" : "user",
+  "passowrd" : "1234"
+}
+
+### managerLogin
+
+POST http://localhost:8080/login
+Content-Type: application/x-www-form-urlencoded
+
+{
+  "username" : "manager",
+  "passowrd" : "1234"
+}
+
+### adminLogin
+
+POST http://localhost:8080/login
+Content-Type: application/x-www-form-urlencoded
+
+{
+  "username" : "admin",
+  "passowrd" : "1234"
+}
+
+
+
